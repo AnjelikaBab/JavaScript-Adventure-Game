@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stolen Memories</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+
+
+</head>
+
+<body id ="bg_gamesynopsis">
+<div id= containgamesynopsis>
+<div id="firstcontainer">
+
+<nav>
+  <img src="images/elements1.png" width="150" alt="element of water and air" />
+  <img src="images/logo2.png" width="500" alt="The game logo/title"  />
+  <img src="images/elements2.png" width="150" alt="element of earth and fire"  />
+</nav>
+
+
+
+
+<div id = "choosecharacter">
+
+
+<div>
+    <label for= "c1"> Roku </label>
+    <p><input type="image" id="c1" name="roku" value="Roku" onclick="return playerselector(value)" src="images/roku2.jpg" width="200" alt="roku character picture" class="center" class="hidden" /> </p>
+
+</div>
+
+<div>
+      <label for= "c2"> Aang </label>
+    <p><input type="image" id="c2" name="aang" value="Aang" onclick="return playerselector(value)" src="images/aang2.jpg" width="200" alt="aang character picture" class="center" class="hidden" /> </p>
+
+</div>
+
+<div>
+    <label for= "c3"> Kuruk </label>
+    <p><input type="image" id="c3" name="kuruk" value="Kuruk" onclick="return playerselector(value)" src="images/kuruk.webp" width="200" alt="kuruk character picture" class="center" class="hidden" /> </p>
+
+</div>
+
+
+  </div>
+<h1 id= "specialtitle"> CHOOSE YOUR CHARACTER </h1>
+</div>
+
+
+<div id="secondcontainer" class="hidden">
+
+
+  <h1> Overview </h1>
+
+  <p> It seems that Avatar <span class= "avatar" > </span> got himself into a pretty sticky situation. He has no idea where he is or what he’s supposed to do. The only thing he has left is the gut feeling that something disastrous is going on. He hears a small voice in his head, familiar but he can’t quite place it. It tells him riddles and rhymes to help lead him to where he needs to go. Your job is to listen to the clues from this mysterious voice and try your best to proceed even though <span class= "avatar" > </span> lost his memories. He doesn’t know this yet but it’s his best friend that is talking to him through telekinesis powers, trapped beyond enemy territory, watched over by Fire Lord Ozai. The only way to get your friend back is to use your gut instincts, the voice in your head, and the elements of fire, water, earth and air to help you through your journey to defeat the fire lord! </p>
+
+  <a href='awakening.html'> <button class="center">Start Game</button> </a>
+
+
+</div>
+
+</div>
+
+</body>
+
+<script>
+
+  function playerselector (charactername) {
+
+  sessionStorage.setItem("character", charactername);
+
+
+  var elementarray = document.getElementsByClassName("avatar");
+     for (i = 0; i < elementarray.length; i++) {
+       elementarray[i].innerHTML = charactername;
+     }
+
+  var element =  document.getElementById("firstcontainer");
+    element.classList.add("hidden");
+
+  var element = document.getElementById("secondcontainer");
+    element.classList.remove("hidden");
+
+
+    return false;
+  }
+
+
+</script>
+
+</html>

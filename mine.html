@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stolen Memories</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+
+</head>
+
+<body id="bg_mine">
+
+<div id="containermine" class="hidden stylecontainermine">
+
+  <h1> GAME RULES </h1>
+
+  <p> Here is the mine where you will get the rubies you need to get your ticket. The avatar will use his earth powers to break bits of the mine for a chance of some rubies falling out. You will always have 3 different options on what percent of power you would like to use. The higher the power, the more gems will fall out. However, here's the catch. There’s a 30% chance that the part of the mine you break will have no gems at all, no matter how much power you use. As well, once you exhaust yourself, you will have to go back to the forest to regain your energy. Don’t worry though! You’ll get to keep your gems even if you exhaust yourself and have to go back to the forest. Once you're in the forest, you completely regain your energy and you’ll be able to go back right away. </p>
+
+  <h2> Lets Start! </h2>
+
+  <div id="energyzero">
+
+  <p><input type="radio" id="option1" name="power" required/> <label for="option1"> <span id= "powerlevel1" > </span>% POWER </label> </p>
+  <p><input type="radio" id="option2" name="power" required/> <label for="option2"> <span id= "powerlevel2" > </span>% POWER </label> </p>
+  <p><input type="radio" id="option3" name="power" required/> <label for="option3"> <span id= "powerlevel3" > </span>% POWER </label> </p>
+
+  <button class="buttonwidth" onclick="mining()">Break the Mine!</button>
+ </div>
+
+  <a href='awakening2.html'> <button class="buttonwidth"> Back to Forest </button> </a>
+
+  <table border ='1'>
+    <tr>
+      <td># of Rubies still needed </td>
+      <td> <span id= "rubiesowed" > </span>  </td>
+    </tr>
+
+    <tr>
+      <td> Energy Left </td>
+      <td> <span id= "energyremaining" > </span> % </td>
+    </tr>
+
+  </table>
+
+  <div id = "jackpottrue" class="hidden">
+    <h3> WOW, this part of the mine just dropped <span id= "rubiesdroppedbymine" > </span> rubies </h3>
+  </div>
+
+  <div id="jackpotfalse" class= "hidden">
+
+    <h3> It looks like this part of the mine had no gems at all! Try again</h3>
+
+  </div>
+
+  <div id = "gobackmessage" class= "hidden center">
+
+    <p> You have no more energy left! Go back to the forest to regenerate. You can come back right away once you're rested.</p>
+
+  </div>
+
+  <div id = "enoughrubies" class= "hidden">
+
+    <h2 class = "center"> You finally have enough rubies to buy your ticket! No need to mine anymore. </h2>
+
+  </div>
+
+
+
+
+
+</div>
+
+<div id="ifnotvisited" class = "hidden stylecontainermine" >
+  <p class ="warning"> hmm I don't know what to do here yet.... </p>
+
+  <a href='awakening2.html'> <button> Back to Forest </button>
+
+</div>
+
+</body>
+
+<script>
+
+
+
+    var timesv = ( sessionStorage.getItem("visited") == "true");
+
+      if (timesv == false)
+      {
+        var element =  document.getElementById("ifnotvisited");
+        element.classList.remove("hidden");
+
+
+      }
+
+      else if (timesv == true)
+      {
+        var element =  document.getElementById("containermine");
+        element.classList.remove("hidden");
+      }
+
+
+
+
+  var rubiesowed= parseInt(sessionStorage.getItem("rubies"));
+
+
+  var energyremaining = 100;
+
+  var element = document.getElementById("rubiesowed");
+         element.innerHTML = rubiesowed;
+
+
+         if (rubiesowed <= 0)
+           {
+             var elementenoughrubies = document.getElementById("enoughrubies");
+                   elementenoughrubies.classList.remove ("hidden");
+
+             var elementenergyzero = document.getElementById("energyzero");
+             elementenergyzero.classList.add("hidden");
+
+
+           }
+
+
+
+  var element2 = document.getElementById("energyremaining");
+          element2.innerHTML = energyremaining;
+
+function updatingtable (Prubiesowed, Penergyremaining ) {
+  var element = document.getElementById("rubiesowed");
+         element.innerHTML = Prubiesowed;
+
+
+  var element2 = document.getElementById("energyremaining");
+          element2.innerHTML = Penergyremaining;
+
+          if (Prubiesowed <0)
+            Prubiesowed=0;
+            var element = document.getElementById("rubiesowed");
+                   element.innerHTML = Prubiesowed;
+
+
+
+        if (Prubiesowed <= 0) {
+          var elementenoughrubies = document.getElementById("enoughrubies");
+                  elementenoughrubies.classList.remove ("hidden");
+
+            var elementenergyzero = document.getElementById("energyzero");
+            elementenergyzero.classList.add("hidden");
+
+        }
+
+      }
+
+
+      function setpercentage (option, percentage) {
+        var id = "option" + option;
+        var span = "powerlevel" + option;
+        document.getElementById(span).innerHTML = percentage;
+        document.getElementById(id).value = percentage;
+
+
+
+      }
+
+
+
+      function getpowerlevels ( Penergyremaining) {
+        var powerarray = [Penergyremaining-10, Penergyremaining-20, Penergyremaining-30]
+        for (i=0; i <powerarray.length; i++) {
+          if (powerarray[i] < 10) {
+            powerarray[i] = 10;
+
+          }
+        }
+
+        if (Penergyremaining == 0) {
+
+          var element = document.getElementById("energyzero");
+            element.classList.add("hidden");
+
+            var element1 = document.getElementById("gobackmessage")
+            element1.classList.remove("hidden");
+
+        }
+
+
+        return powerarray;
+      }
+
+      function setpowerlevels (Penergyremaining)
+      {
+        var differentpowerlevels = getpowerlevels(Penergyremaining);
+        for (i=0; i < differentpowerlevels.length; i++)
+        {
+         setpercentage (i + 1 , differentpowerlevels[i]);
+        }
+      }
+
+      setpowerlevels(60);
+
+
+    function mining () {
+
+      var x = Math.random()
+      if (x < .3)
+      {
+        var jackpot = false
+      }
+      else
+      {
+        var jackpot = true
+      }
+
+      option = [1, 2, 3]
+      for (x=0; x < option.length; x++) {
+        var id = "option" + option[x];
+        var value = document.getElementById(id).value;
+
+      var checked = (document.getElementById(id).checked);
+      var elementjackpottrue = document.getElementById("jackpottrue");
+      var elementjackpotfalse = document.getElementById("jackpotfalse");
+      if (checked == true)
+      {
+        energyremaining = energyremaining - value;
+
+        if (jackpot == true)
+        {
+
+          var minnum= Math.ceil(value/10);
+          var maxnum= minnum*2;
+          var rubiesdroppedbymine = Math.floor(Math.random() * (maxnum - minnum + 1)) + minnum;
+
+          var element = document.getElementById("rubiesdroppedbymine");
+                 element.innerHTML = rubiesdroppedbymine;
+
+            elementjackpottrue.classList.remove("hidden");
+            elementjackpotfalse.classList.add("hidden");
+        }
+
+        else
+        {
+
+            elementjackpotfalse.classList.remove("hidden");
+            elementjackpottrue.classList.add("hidden");
+
+            rubiesdroppedbymine = 0;
+        }
+
+        rubiesowed = rubiesowed - rubiesdroppedbymine;
+
+        updatingtable (rubiesowed, energyremaining);
+        setpowerlevels (energyremaining);
+
+        sessionStorage.setItem("rubies", rubiesowed);
+      }
+    }
+  }
+
+
+
+
+</script>
+
+</html>

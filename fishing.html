@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stolen Memories</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+
+
+</head>
+
+<body id = "bg_fishing">
+<div id="containerfishing">
+
+<div id="fishinggame">
+
+<h1> Time to Fish! </h1>
+<p> Here is the lake where your job is to go fishing. The voice told you to go here but all you can think about is how hungry the puppy looked. Go fish until you are able to catch something to cook for him. Since The Avatar does not have  a fishing rod, he will have to use his air and water powers to try to pick up on something. </p>
+
+<h2>Rules: </h2> <!-- The combo is 3 and 3 -->
+<p> You will have to guess the correct combination of how much element power and how much distance is needed to catch a fish. Both have a range from 1-5 as shown below so use trial and error to feed that puppy! </p>
+
+<p>
+  <label class ="fishinglabel"for="slider"> Element Power:</label>
+  <input type="range" id="power" class="slider" name="slider" min="1" max="5" />
+   <span id="numberp"> </span>
+</p>
+
+<p>
+  <label class ="fishinglabel" for="slider"> Distance From Shore(m):</label>
+  <input type="range" id="distance" class="slider" name="slider" min="1" max="5" />
+  <span id="numberd"> </span>
+</p>
+
+<button onclick="fishing()">Fish</button>
+
+</div>
+
+<p class= "bolding" id = "message"> </p>
+
+</div>
+
+
+</body>
+
+<script>
+var slider = document.getElementById("power");
+var output = document.getElementById("numberp");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+var slider2 = document.getElementById("distance");
+var output2 = document.getElementById("numberd");
+output2.innerHTML = slider2.value;
+
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+
+
+
+
+function fishing () {
+
+  if (slider.value == 3 && slider2.value == 3)
+  {
+    document.getElementById("message").innerHTML = "It seems that your power and distance from shore was perfectly balanced, becauase you caught a fish! <p> <a href='puppy2.html'> <button> Go back to the puppy </button> </a> </p> ";
+
+    var element =  document.getElementById("fishinggame");
+      element.classList.add("hidden");
+
+  }
+
+  else if (slider.value == 3 && slider2.value > 3)
+  {
+    document.getElementById("message").innerHTML = "It seems that your power was perfect. However your distance from shore was too far, no fish were there!";
+  }
+
+  else if (slider.value == 3 && slider2.value < 3)
+  {
+    document.getElementById("message").innerHTML = "It seems that your power was perfect. However you did not reach far enough, no fish were there!";
+  }
+
+  else if (slider.value < 3 && slider2.value == 3)
+  {
+    document.getElementById("message").innerHTML = "The distance from shore is perfect, but you used too little of your power, there was not enough current or wind!";
+  }
+
+  else if (slider.value > 3 && slider2.value == 3)
+  {
+    document.getElementById("message").innerHTML = "The distance from shore is perfect, but you used too much of your power, the current and winds were too high!";
+  }
+
+  else if (slider.value > 3 && slider2.value > 3)
+  {
+    document.getElementById("message").innerHTML = "Both your distance and power are too big!";
+  }
+
+  else if (slider.value < 3 && slider2.value < 3)
+  {
+    document.getElementById("message").innerHTML = "Both your distance and power are too small!";
+  }
+
+  else if (slider.value < 3 && slider2.value > 3)
+  {
+    document.getElementById("message").innerHTML = "Your power was too weak and your distance was too far from shore!";
+  }
+
+  else if (slider.value > 3 && slider2.value < 3)
+  {
+    document.getElementById("message").innerHTML = "Your power was too strong and your distance was too short!";
+  }
+
+
+
+}
+
+</script>
+
+</html>

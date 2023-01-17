@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stolen Memories</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+
+
+</head>
+
+<body class="bg_puppy">
+
+<div class="containerpuppy">
+
+
+    <p class = "center"> <span class= "avatar" > </span>  uses his fire powers to cook the fish and he gives it to the small puppy. Before he could even blink, the puppy starts growing until he is 10x the size he was before. Suddenly , <span class= "avatar" > </span>  gets a crucial memory back. This is Appa, a bison who  is a trusty spirit guide. He’ll be able to fly over the large wall and after seeing Appa, <span class= "avatar" > </span> has regained all his memories and knows that beyond this wall is enemy territory and that the voice he’s hearing is his best friend...</p>
+
+    <img src="images/firenation.png" width="200" alt="fire nation picture" class=center />
+
+    <p> <a href='boss.html'> <button class = "center"> Go to Enemy Territory </button> </a> </p>
+
+
+
+</div>
+
+
+
+
+</body>
+
+<script>
+
+  var name = sessionStorage.getItem("character");
+
+  var elementarray = document.getElementsByClassName("avatar");
+     for (i = 0; i < elementarray.length; i++) {
+       elementarray[i].innerHTML = name;
+     }
+
+</script>
+
+</html>

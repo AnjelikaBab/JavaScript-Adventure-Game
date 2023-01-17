@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Stolen Memories</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+
+
+</head>
+
+<body id = "bg_village">
+
+  <div id= "containerwholevillage">
+
+  <div id='containentrance'>
+
+    <h1> The Village </h1>
+
+     <p>The sun is shining bright as <span class= "avatar" > </span>  finally enters the beautiful village. It is not the biggest village he has ever seen but he notices that he can’t get through further into the forest because it’s blocked by an extremely long and tall wall and he doesn’t have the ability to fly too high with his air powers. He sees a villager walk up to him.  </p>
+
+
+   <table  border='1' class = "villagetable">
+
+    <tr>
+
+       <td> “HEY you, what do you think you're doing looking all suspicious, aren't you going to pay your entrance fee?” <br />
+        <span class= "dialogue" > YOU: "I don’t have any money sir” </span> <br />
+        “MONEY? Who cares about MONEY. You must pay in the most beautiful gemstone of them all.  RUBIES! If you can’t do that, get out.”<br /> <span class= "dialogue" > YOU: “But how can I cross that wall?” </span> <br />
+        “Ohhh I see, I see. Well, indeed the only way is to buy a ticket. I’m feeling generous today so let’s make a bet. You spin this wheel of fortune, it’ll decide the price of your ticket. It could be anywhere between 10-30 rubies! If you say no the original price is 20 rubies. You have a chance to pay more, to pay the same price, or get a discount! Aren’t I so fantastic! If you come back to me to pay your price, you won’t need an entrance fee."
+        <td> <img class="fitbox" src='images/villager.jpg' width='200' alt='pic of villager' /> </td>
+
+        </td>
+     </tr>
+
+
+  </table>
+
+  <p>
+    <button type="submit" value="yes" onclick="return bet(value)">Agree</button>
+    <button type="submit" value="no" onclick="return bet(value)">Disagree</button>
+  </p>
+
+</div>
+
+  <div id="containyes" class="hidden">
+
+  <table border='1' id= "specialvillagetable" class = "center">
+  <tr>
+  <td> <img src='images/wheel.gif' width='200' alt='wheel of fortune'/> </td>
+ </tr>
+ <tr>
+  <td> <p> Your spin landed on the number <span class= "moneycount" > </span>. That means you now owe the villager <span class= "moneycount" > </span> rubies in order to get your ticket to cross the village borders. Now where are you going to find some rubies? </p>
+  </td>
+ </tr>
+  </table>
+
+  <a href='mine.html' >  <button class = "center"> Go to Mine </button> </a>
+  <a href='awakening2.html'> <button class = "center"> Go to Forest </button> </a>
+
+
+
+  </div>
+
+  <div id="containno" class="hidden">
+
+    <table border='1' class = "villagetable">
+      <tr>
+        <td>  Okay fine, you still owe 20 rubies. I dont care how you manage to get me them, but you better figure it out if you want your sweet ticket out of here! </td>
+        <td> <img src='images/villager2.jpg' width='200' alt='pic of villager'/> </td>
+      </tr>
+    </table>
+
+    <a href='awakening2.html'> <button> Go to Forest </button> </a>
+    <a href='mine.html'> <button> Go to Mine </button> </a>
+
+
+  </div>
+
+  <div id="gomining" class="hidden">
+
+    <p class ="warning"> Hey, you still need to go mining and get those rubies! </p>
+
+    <a href='awakening2.html'> <button> Back to Forest </button> </a>
+
+  </div>
+
+  <div id = "ticketretrieval" class="hidden">
+
+    <table border='1' class = "villagetable">
+      <tr>
+        <td>  “WOW so many gems.. I MEAN, yes this was quite a great deal I offered you, I bet these other villagers would have asked for so many more gems from you. They are so greedy unlike me! I am such a good person. Now get out of my face” </td>
+        <td> <img src='images/villager2.jpg' width='200' alt='pic of villager'/> </td>
+      </tr>
+    </table>
+
+    <img class = "center" src='images/ticket3.gif' width='200' alt='gif of ticket'/>
+    <h1 class ="center"> TICKET AQUIRED </h1>
+
+    <a href='puppy.html'> <button class = "center"> Cross Village Borders </button> </a>
+
+  </div>
+
+</div>
+
+
+
+</body>
+
+
+  <script>
+
+   var name = sessionStorage.getItem("character");
+
+   var elementarray = document.getElementsByClassName("avatar");
+      for (i = 0; i < elementarray.length; i++) {
+        elementarray[i].innerHTML = name;
+      }
+
+
+    var visited = false;
+
+  function bet (answer) {
+
+    if (answer == "yes") {
+      visited = true;
+      var minnum=10
+      var maxnum=30
+      var rubies = Math.floor(Math.random() * (maxnum - minnum + 1)) + minnum;
+
+
+      var rubyarray = document.getElementsByClassName("moneycount");
+         for (i = 0; i < rubyarray.length; i++)
+         {
+           rubyarray[i].innerHTML = rubies;
+         }
+
+         var element =  document.getElementById("containentrance");
+           element.classList.add("hidden");
+
+         var element = document.getElementById("containyes");
+           element.classList.remove("hidden");
+
+      }
+
+         else if (answer == "no")
+         {
+           visited=true;
+           var rubies = 20;
+
+           var element =  document.getElementById("containentrance");
+             element.classList.add("hidden");
+
+           var element = document.getElementById("containno");
+             element.classList.remove("hidden");
+          }
+
+    sessionStorage.setItem("rubies", rubies);
+    sessionStorage.setItem("visited", visited);
+
+    return false;
+  }
+
+  var timesv = (sessionStorage.getItem("visited") == "true");
+  var moneyowed = parseInt(sessionStorage.getItem("rubies"));
+
+  if (moneyowed > 0 && timesv == true)
+
+  {
+
+    var element =  document.getElementById("containentrance");
+      element.classList.add("hidden");
+
+    var element2 = document.getElementById("gomining");
+      element2.classList.remove("hidden");
+  }
+
+  else if (moneyowed <= 0 && timesv == true) {
+
+    var element = document.getElementById("containentrance");
+      element.classList.add("hidden");
+
+      var element2 = document.getElementById("ticketretrieval");
+        element2.classList.remove("hidden");
+
+
+  }
+
+
+  </script>
+
+</html>

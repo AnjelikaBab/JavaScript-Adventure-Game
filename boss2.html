@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Stolen Memories</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+
+
+  </head>
+
+  <body class="bg_boss">
+  <div class="containerboss">
+
+    <div id= "bossend">
+
+    <h1> BOSS BATTLE </h1>
+
+    <img class= "center" src='images/fightingboss.gif' width='500' alt='pic of battling'/>
+
+    <p class="center bolding" id = "battlemessage"> </p>
+
+
+<div class="healthbar" id="enemyhealthbar">
+  <div id= "enemyhealthbardisplay"> </div> <p class="margintop"  > Lord Ozai: <span id ="enemypercentage"> </span> % </p>
+</div>
+
+
+<div class="healthbar" id="avatarhealthbar">
+<div id="avatarhealthbardisplay"> </div> <p class="margintop"  > <span class ="avatar"> </span>:  <span id ="avatarpercentage"> </span> % </p>
+</div>
+
+
+    <h2> CHOOSE YOUR MOVE </h2>
+
+
+<div class= "center" id= "attackmoves">
+
+  <div>
+       <button id="firebutton" onclick="fireFunction()">   <img class= "circle" src="images/fireattack.jpg" width="150"  alt="element of fire" /></button>
+       <h2> FIRE </h2>
+  </div>
+
+<div>
+        <button id="waterbutton" onclick="waterFunction()">   <img class= "circle" src="images/waterattack.jpg" width="150"  alt="element of water" /></button>
+        <h2> WATER </h2>
+</div>
+
+
+<div>
+       <button id="airbutton" onclick="airFunction()">   <img class= "circle" src="images/airattack.jpg" width="150"  alt="element of air" /></button>
+       <h2> AIR </h2>
+</div>
+
+<div>
+       <button id="earthbutton" onclick="earthFunction()">   <img class= "circle" src="images/earthattack.jpg" width="150"  alt="element of earth" /></button>
+       <h2> EARTH </h2>
+
+</div>
+  </div>
+
+
+    <button id="oneclick" class= "center" onclick= "heal()">HEAL 30% HEALTH----(1 TIME USE) </button>
+
+    </div>
+
+    <div id = "grandfinale" class = "hidden">
+    <p class='bolding'> Finally, after a long battle, it seems that Fire Lord Ozai has been defeated and from the looks of it, he won't be bothering the avatar or his friends any longer...</p>
+
+    <p> <a href='ending.html'> <button class = "center">FINALE</button> </a> </p>
+
+    </div>
+
+    <div id = "resetloss" class= "hidden">
+    <p class='bolding'> YOU LOST TO FIRE LORD OZAI...</p>
+
+    <p> <a href='boss2.html'> <button class = "center">RETRY</button> </a> </p>
+
+    </div>
+
+  </div>
+
+
+
+  </body>
+
+  <script>
+    /*Easiest way to win is pressing water element */
+
+    var name = sessionStorage.getItem("character");
+
+    var elementarray = document.getElementsByClassName("avatar");
+       for (i = 0; i < elementarray.length; i++) {
+         elementarray[i].innerHTML = name;
+       }
+
+
+    function randogenerator(minN, maxN) {
+
+      var randnumber = Math.floor(Math.random() * (maxN - minN + 1)) + minN;
+
+    return (randnumber);
+
+    }
+/*1= attack, 2= defend, 3= special attack */
+    function enemyrandomnumber () {
+      var maxN = 3;
+      var minN = 1;
+
+        var randnumber = Math.floor(Math.random() * (maxN - minN + 1)) + minN;
+
+      return (randnumber);
+    }
+
+
+    var enemypercent = 100;
+
+    var elementenemy = document.getElementById("enemypercentage");
+         elementenemy.innerHTML = enemypercent;
+
+    var avatarpercent = 100;
+
+    var elementavatar = document.getElementById("avatarpercentage");
+          elementavatar.innerHTML = avatarpercent;
+
+
+    function enemyhealth (Phealthremainingenemy) {
+
+
+        var elementenemy = document.getElementById("enemypercentage");
+             elementenemy.innerHTML = Phealthremainingenemy;
+
+             document.getElementById("enemyhealthbardisplay").style.width = Phealthremainingenemy + "%";
+
+             if (Phealthremainingenemy <= 0) {
+               var elementendgame = document.getElementById("bossend");
+                 elementendgame.classList.add("hidden");
+
+                 var elementgrandfinale = document.getElementById("grandfinale");
+                   elementgrandfinale.classList.remove("hidden");
+
+
+             }
+
+    }
+
+    function avatarhealth (Phealthremainingavatar) {
+
+
+        var elementavatar = document.getElementById("avatarpercentage");
+              elementavatar.innerHTML = Phealthremainingavatar;
+
+              document.getElementById("avatarhealthbardisplay").style.width = Phealthremainingavatar + "%";
+
+              if (Phealthremainingavatar <=0) {
+                var elementendgame = document.getElementById("bossend");
+                  elementendgame.classList.add("hidden");
+
+                  var elementresetloss = document.getElementById("resetloss");
+                    elementresetloss.classList.remove("hidden");
+              }
+
+    }
+
+    function heal() {
+      if (avatarpercent <=70) {
+      avatarpercent = avatarpercent + 30;
+      avatarhealth (avatarpercent);
+      document.getElementById("battlemessage").innerHTML = "You take a little pill of medicine that increases your health by 30%!"
+      document.getElementById("oneclick").disabled = true
+
+     }
+      else {
+        document.getElementById("battlemessage").innerHTML = "You are still sufficient in health!"
+      }
+    }
+
+/*1= attack, 2= defend, 3= special attack */
+    function fireFunction() {
+
+      var enemymove = enemyrandomnumber();
+
+      if (enemymove == 1) {
+
+        document.getElementById("battlemessage").innerHTML = " You and Lord Ozai both use a fire attack and create an equilibrium force. Nobody dealt damage!";
+
+      }
+
+      else if (enemymove == 2) {
+        console.log (enemymove);
+        enemypercent = enemypercent - randogenerator(1,5);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai defends with a shield of fire but your fire attack ruins his shield! You deal him a small amount of damage!";
+
+        enemyhealth(enemypercent);
+      }
+
+      else if (enemymove ==3)
+      {
+        avatarpercent = avatarpercent - randogenerator(10,15);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai uses his special attack and your fire attack only increases it's power, you deal some damage!";
+
+        avatarhealth(avatarpercent);
+      }
+    }
+
+    function waterFunction() {
+
+      var enemymove = enemyrandomnumber();
+
+      if (enemymove == 1) {
+        enemypercent = enemypercent - randogenerator(15,30);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai attacks you with some mediocre fire attack but your water beats fire, so you deal him some damage!";
+
+        enemyhealth(enemypercent);
+
+
+      }
+
+      else if (enemymove == 2) {
+        enemypercent = enemypercent - randogenerator(10,15);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai defends using a shield of fire however your water attack is able to pierce right through it, so you deal him some damage. However, not as much damage was dealt!";
+
+        enemyhealth(enemypercent);
+      }
+
+
+      else if (enemymove ==3)
+      {
+        avatarpercent = avatarpercent - randogenerator(5,10);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai uses his special attack and this time it's a grease fire! Your water attack backfires and you deal some damage!";
+
+        avatarhealth(avatarpercent);
+      }
+    }
+
+    function airFunction() {
+
+      var enemymove = enemyrandomnumber();
+
+      if (enemymove == 1) {
+        avatarpercent = avatarpercent - randogenerator(1,5);
+        document.getElementById("battlemessage").innerHTML = "Your air powers spread the fire that is coming towards you, you deal a little bit of damage.";
+
+        avatarhealth(avatarpercent);
+      }
+
+      else if (enemymove == 2) {
+        enemypercent = enemypercent - randogenerator(10,20);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai defends with a wall of fire but your air powers spread the fire towards him. You deal him some damage!";
+
+        enemyhealth(enemypercent);
+      }
+
+      else if (enemymove ==3)
+      {
+        avatarpercent = avatarpercent - randogenerator(5,10);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai uses a special attack and your air powers are too weak to defend or attack the fire coming towards you. You deal some damage!";
+
+        avatarhealth(avatarpercent);
+      }
+    }
+
+    function earthFunction() {
+
+      var enemymove = enemyrandomnumber();
+
+      if (enemymove == 1) {
+        document.getElementById("battlemessage").innerHTML = "You create a wall of earth that defends you from his fire attack. Nobody deals any damage";
+
+      }
+
+      else if (enemymove == 2) {
+        enemypercent = enemypercent - randogenerator(10,20);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai defends himself with a ring of fire, however you use this to your advantage and attack him from underground within his ring! You deal him some damage";
+
+        enemyhealth(enemypercent);
+      }
+
+      else if (enemymove ==3)
+      {
+        avatarpercent = avatarpercent - randogenerator(5,10);
+        document.getElementById("battlemessage").innerHTML = "Lord Ozai uses his special attack which comes really fast. You try to defend yourself but accidentally use wood instead of stone, so you deal some damage!";
+
+        avatarhealth(avatarpercent);
+      }
+    }
+
+
+
+  </script>
+
+  </html>
