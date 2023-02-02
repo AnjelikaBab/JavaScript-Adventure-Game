@@ -1,0 +1,420 @@
+* { padding: 0px;
+margin: 0px;
+box-sizing: border-box;
+}
+
+
+#containgamesynopsis {
+  background-color: #FEFFD0;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #bc9c60 solid;
+  border-right: 20px #bc9c60 solid;
+  border-bottom: 20px #bc9c60 solid;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.containerawakening {
+  background-color: #C5E5C6;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #0e4d0c solid;
+  border-right: 20px #0e4d0c solid;
+  border-bottom: 20px #0e4d0c solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#containerwholevillage {
+  background-color: #DAEAFF;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #100874 solid;
+  border-right: 20px #100874 solid;
+  border-bottom: 20px #100874 solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.villagetable {
+  background-color: #DAEAFF;
+  border: 2px solid #1F2A94;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#specialvillagetable {
+  table-layout: auto;
+  width: 500px;
+  background-color: #DAEAFF;
+  border: 2px solid #1F2A94;
+  border-collapse: collapse;
+}
+
+.stylecontainermine {
+  background-color: #CDCCECCC;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #171c2f solid;
+  border-right: 20px #171c2f solid;
+  border-bottom: 20px #171c2f solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.containerpuppy {
+  background-color: #F2DFB3;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #c0a25c solid;
+  border-right: 20px #c0a25c solid;
+  border-bottom: 20px #c0a25c solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#containerfishing {
+  background-color: #A3CFF6;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #5c67c0 solid;
+  border-right: 20px #5c67c0 solid;
+  border-bottom: 20px #5c67c0 solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.containerboss {
+  background-color: #FFEDDE;
+  width: 1000px;
+  padding: 15px;
+  border-left: 20px #7c1800 solid;
+  border-right: 20px #7c1800 solid;
+  border-bottom: 20px #7c1800 solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#containerend { background-color: #FFCD8C;
+width: 1000px;
+padding: 15px;
+border-left: 20px #db6a02 solid;
+border-right: 20px #db6a02 solid;
+border-bottom: 20px #db6a02 solid;
+margin-left: auto;
+margin-right: auto;
+
+}
+
+#choosecharacter
+{
+  display: flex;
+  width:100%;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #735527;
+}
+
+nav img {
+  margin-right: 30px;
+  border-radius: 15px;
+}
+
+#choosecharacter > div
+{
+  width: 25%;
+  align-self: flex-end;
+}
+
+#choosecharacter label
+{
+  text-align: center;
+  width:100%;
+}
+
+#choosecharacter input {
+  border-radius: 100px;
+}
+
+#choosecharacter input:hover {
+  width: 240px;
+  height:auto;
+}
+
+#specialtitle {
+  margin-top: 40px;
+  font-style: oblique;
+  color: #735527;
+}
+
+#pc_awakening {
+  display: flex;
+  width:100%;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+#pc_awakening > form {
+  width: 25%;
+  align-self: flex-end;
+}
+
+#pc_awakening input:nth-child(1) {
+  height: 153px;
+}
+
+#pc_awakening input:hover {
+  height: 190px;
+  width: 230px;
+}
+
+#pc_awakening input {
+  border-radius: 50px;
+}
+
+.buttonwidth {
+  width:220px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+
+.fitbox {
+  width: 100%;
+  display: block;
+}
+
+img {
+  display:inline;
+  border-radius: 8px;
+    }
+
+nav {
+  text-align: center;
+    }
+
+.center {
+  display: block;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.floatleft {
+  float: left;
+  margin-right: 20px;
+  display:block;
+}
+
+body {
+  line-height: 170%;
+  font-family: times,  Comic, sans-serif;
+  font-size: 18px;
+}
+
+#bg_gamesynopsis {
+  background-image: url("../images/backg.jpg");
+}
+
+.bg_awakening {
+  background-image: url("../images/forestbg.jpg");
+}
+
+#bg_village {
+  background-image: url("../images/village.webp");
+}
+
+#bg_mine{
+  background-image: url("../images/mine.png");
+}
+
+.bg_puppy {
+  background-image: url("../images/puppybg2.jpg");
+
+}
+
+#bg_fishing {
+  background-image: url("../images/fishinglake.png");
+}
+
+.bg_boss {
+  background-image: url("../images/bossbattlebg.jpg");
+}
+
+#bg_ending {
+  background-image: url("../images/appa2.jpg");
+}
+
+
+
+
+.hidden {
+  display: none;
+}
+
+.buttonimages {
+  border-radius: 8px;
+
+}
+
+.dialogue {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.warning {
+  font-size: 43px;
+  margin-top: 16px;
+  margin-bottom: 25px;
+
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  background: #d3d3d3;
+  outline: none;
+  border-radius: 10px;
+  width:30% ;
+
+}
+
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 20px;
+  background: #5c67c0;
+  cursor: pointer;
+}
+
+.fishinglabel {
+  font-weight: bold;
+  display: block;
+}
+
+.bolding {
+  font-weight: bold;
+}
+
+table {
+
+  border: 2px solid #1F2A94;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+td, th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+p, h1, h2, h3, h4 {
+  margin-top: 16px;
+  margin-bottom: 10px;
+}
+
+h1,h2,h3 {
+  text-align: center;
+}
+
+.inline {
+  display: inline;
+}
+
+.center {
+  text-align: center;
+}
+
+
+
+button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+button:hover {
+  font-size: 125%;
+  cursor: pointer;
+
+}
+
+
+#attackmoves button {
+    margin-left: 10px;
+    background-color: inherit;
+
+}
+
+
+.circle {
+  border-radius: 100px;
+}
+
+#attackmoves {
+  display: flex;
+  justify-content: center;
+}
+
+#attackmoves img:hover {
+  height: 180px;
+  width: auto;
+}
+
+#oneclick {
+  background-color: #7c1800;
+}
+
+.healthbar {
+background-color: white;
+width: 70%;
+margin: auto;
+height: 30px;
+border-radius: 30px;
+}
+
+.healthbar div {
+  height:100%;
+  width:100%;
+}
+
+
+#avatarhealthbar div {
+background-color: #00c179;
+margin-top: 10px;
+border-radius: 30px;
+
+}
+
+#enemyhealthbar div {
+  background-color:#d65656;
+  border-radius: 30px;
+}
+
+.margintop {
+  margin-top: -30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+a {
+  text-decoration: none;
+}
